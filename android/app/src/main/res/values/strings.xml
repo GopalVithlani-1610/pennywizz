@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">SpendsureTest</string>
+    <string moduleConfig="true" name="CodePushDeploymentKey">CaGJT0_mGz-9oBks4kvjl4vBRyaYY3e2zJrprk</string>
+</resources>

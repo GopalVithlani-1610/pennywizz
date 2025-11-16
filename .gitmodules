@@ -1,0 +1,3 @@
+[submodule "web/jointhequeue"]
+	path = web/jointhequeue
+	url = https://github.com/Twodevelopers04/jointhequeue-waitlist-prod.git/

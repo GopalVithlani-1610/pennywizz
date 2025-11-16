@@ -1,0 +1,14 @@
+{
+  "extends": "@react-native/typescript-config/tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/src/*": ["src/*"],
+      "@/app/*": ["src/app/*"],
+      "@/database/*": ["src/database/*"],
+      "@/*": ["*"]
+    },
+    "experimentalDecorators": true,
+    "forceConsistentCasingInFileNames": true
+  }
+}

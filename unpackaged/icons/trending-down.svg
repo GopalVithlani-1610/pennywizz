@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="6.3499594mm"
+   height="3.7041669mm"
+   viewBox="0 0 6.3499594 3.7041669"
+   version="1.1"
+   id="svg1"
+   xml:space="preserve"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"><defs
+     id="defs1" /><g
+     id="layer1"
+     transform="translate(-112.50053,-147.41743)"><g
+       style="fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
+       id="g1"
+       transform="matrix(0.26458333,0,0,0.26458333,112.50049,146.09452)"><path
+         style="color:#000000;fill:#000000;stroke:none;stroke-linecap:butt;stroke-linejoin:miter;-inkscape-stroke:none"
+         d="m 1,5 a 1,1 0 0 0 -0.70703125,0.2929687 1,1 0 0 0 0,1.4140625 L 7.7929687,14.207031 a 1.0001,1.0001 0 0 0 1.4140626,0 L 13.5,9.9140625 22.292969,18.707031 a 1,1 0 0 0 1.414062,0 1,1 0 0 0 0,-1.414062 l -9.5,-9.5000003 a 1.0001,1.0001 0 0 0 -1.414062,0 L 8.5,12.085938 1.7070312,5.2929687 A 1,1 0 0 0 1,5 Z"
+         id="polyline1" /><path
+         style="color:#000000;fill:#000000;stroke:none;stroke-linecap:butt;stroke-linejoin:miter;-inkscape-stroke:none"
+         d="m 23,11 a 1,1 0 0 0 -1,1 v 5 h -5 a 1,1 0 0 0 -1,1 1,1 0 0 0 1,1 h 6 a 1.0001,1.0001 0 0 0 1,-1 v -6 a 1,1 0 0 0 -1,-1 z"
+         id="polyline2" /></g></g></svg>

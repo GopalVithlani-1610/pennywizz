@@ -1,0 +1,42 @@
+[
+  {
+    "name": "USD Dollar",
+    "symbol": "$"
+  },
+  {
+    "name": "Canadian Dollar",
+    "symbol": "CA$"
+  },
+  {
+    "name": "Euro",
+    "symbol": "€"
+  },
+  {
+    "name": "Dirham",
+    "symbol": "AED"
+  },
+  {
+    "name": "Indian Rupee",
+    "symbol": "₹"
+  },
+  {
+    "name": "Indonesia Rupiah",
+    "symbol": "Rp"
+  },
+  {
+    "name": "Australian Dollar",
+    "symbol": "A$"
+  },
+  {
+    "name": "Ruble",
+    "symbol": "₽"
+  },
+  {
+    "name": "Brazilian Real",
+    "symbol": "R$"
+  },
+  {
+    "name": "Argentina Peso",
+    "symbol": "$"
+  }
+]

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="5.8208332mm"
+   height="5.8208337mm"
+   viewBox="0 0 5.8208332 5.8208337"
+   version="1.1"
+   id="svg1"
+   xml:space="preserve"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"><sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm" /><defs
+     id="defs1" /><g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-90.402682,-144.74163)"><g
+       style="fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
+       id="g2"
+       transform="matrix(0.26458333,0,0,0.26458333,90.138097,144.47705)"><path
+         style="color:#000000;fill:#000000;stroke:none;stroke-linecap:butt;stroke-linejoin:miter;-inkscape-stroke:none"
+         d="M 7.859375,1 A 1.0001,1.0001 0 0 0 7.1523437,1.2929687 l -5.859375,5.859375 A 1.0001,1.0001 0 0 0 1,7.859375 v 8.28125 a 1.0001,1.0001 0 0 0 0.2929687,0.707031 l 5.859375,5.859375 A 1.0001,1.0001 0 0 0 7.859375,23 h 8.28125 a 1.0001,1.0001 0 0 0 0.707031,-0.292969 l 5.859375,-5.859375 A 1.0001,1.0001 0 0 0 23,16.140625 V 7.859375 A 1.0001,1.0001 0 0 0 22.707031,7.1523437 L 16.847656,1.2929687 A 1.0001,1.0001 0 0 0 16.140625,1 Z M 8.2734375,3 H 15.726563 L 21,8.2734375 V 15.726563 L 15.726563,21 H 8.2734375 L 3,15.726563 V 8.2734375 Z"
+         id="polygon1" /><path
+         style="color:#000000;fill:#000000;stroke:none;stroke-linecap:butt;stroke-linejoin:miter;-inkscape-stroke:none"
+         d="M 15,8 A 1,1 0 0 0 14.292969,8.2929688 L 8.2929688,14.292969 a 1,1 0 0 0 0,1.414062 1,1 0 0 0 1.4140625,0 L 15.707031,9.7070313 a 1,1 0 0 0 0,-1.4140625 A 1,1 0 0 0 15,8 Z"
+         id="line1" /><path
+         style="color:#000000;fill:#000000;stroke:none;stroke-linecap:butt;stroke-linejoin:miter;-inkscape-stroke:none"
+         d="m 9,8 a 1,1 0 0 0 -0.7070312,0.2929688 1,1 0 0 0 0,1.4140625 l 6.0000002,5.9999997 a 1,1 0 0 0 1.414062,0 1,1 0 0 0 0,-1.414062 L 9.7070313,8.2929688 A 1,1 0 0 0 9,8 Z"
+         id="line2" /></g></g></svg>

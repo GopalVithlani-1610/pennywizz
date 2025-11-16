@@ -1,0 +1,18 @@
+module.exports = {
+  presets: ['module:@react-native/babel-preset'],
+  plugins: [
+    ['@babel/plugin-proposal-decorators', {legacy: true}],
+    '@babel/plugin-proposal-export-namespace-from',
+    [
+      'babel-plugin-module-resolver',
+      {
+        alias: {
+          '@/app': './src/app',
+          '@/database': './src/database',
+          '@': './',
+        },
+      },
+    ],
+    'react-native-reanimated/plugin',
+  ],
+};

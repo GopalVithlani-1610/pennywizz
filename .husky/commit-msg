@@ -1,0 +1,12 @@
+#!/bin/sh
+
+
+COMMIT_MSG_FILE=$1
+COMMIT_MSG=$(cat $COMMIT_MSG_FILE)
+
+PATTERN="^(feat|fix|chore|docs|refactor|test|style|merge|version)(\(.+\))?: .+"
+if ! echo "$COMMIT_MSG" | grep -Eq "$PATTERN"; then
+  echo "Invalid commit message format. Follow Conventional Commits format."
+  echo "Examples: 'feat: add new feature' or 'fix: correct bug'"
+  exit 1
+fi
