@@ -1,14 +1,20 @@
 import {BottomTabBarProps} from '@react-navigation/bottom-tabs';
 import React from 'react';
 import {Platform, StyleSheet, View} from 'react-native';
-import {BORDER_RADIUS, COLORS, SPACING} from '@/app/theme';
+import {BORDER_RADIUS, SPACING} from '@/app/theme';
+import {useTheme} from '@/app/hooks/useTheme';
 import TabIcon from './TabIcon';
 
 export default (props: BottomTabBarProps) => {
+  const {colors, isDark} = useTheme();
   const selectedRoute = props.state.routeNames[props.state.index];
 
   return (
-    <View style={styles.tabContainer}>
+    <View style={[styles.tabContainer, {
+      backgroundColor: colors.cardBackground,
+      borderTopColor: colors.border,
+      shadowColor: isDark ? '#000000' : '#000000',
+    }]}>
       {props.state.routes.map(route => {
         const options = props.descriptors[route.key].options;
         return (
@@ -33,13 +39,19 @@ export default (props: BottomTabBarProps) => {
 const styles = StyleSheet.create({
   tabContainer: {
     flexDirection: 'row',
-    backgroundColor: Platform.OS === 'ios' ? COLORS.white : COLORS.white,
-    shadowColor: COLORS.white,
     borderTopWidth: 1,
-    borderTopColor: COLORS.lightGray,
     borderTopStartRadius: BORDER_RADIUS.md,
     borderTopEndRadius: BORDER_RADIUS.md,
     paddingVertical: SPACING.md - 4,
-    // ...CommonStyles.ctaShadow,
+    ...Platform.select({
+      ios: {
+        shadowOffset: {width: 0, height: -2},
+        shadowOpacity: 0.1,
+        shadowRadius: 4,
+      },
+      android: {
+        elevation: 8,
+      },
+    }),
   },
 });

@@ -8,13 +8,12 @@ export const createConditionalStyle = (
   elseApplyStyle: any = {},
 ) => (evalaution ? toApplyStyle : elseApplyStyle);
 const CommonStyles = StyleSheet.create({
-  flex1: {flex: 1, backgroundColor: COLORS.white},
+  flex1: {flex: 1},
   backdrop: {
     backgroundColor: COLORS.overlay,
   },
   screenContainer: {
     flex: 1,
-    backgroundColor: COLORS.lightGray,
     paddingHorizontal: SPACING.md,
     paddingBottom: SPACING.md,
   },
@@ -30,7 +29,6 @@ const CommonStyles = StyleSheet.create({
   smallLine: {
     width: 40,
     height: 3,
-    backgroundColor: COLORS.black,
     borderRadius: 10,
     alignSelf: 'center',
     marginBottom: 20,
@@ -47,7 +45,6 @@ const CommonStyles = StyleSheet.create({
   btnTextStyle: {
     fontFamily: FONTS.semiBold,
     fontSize: 20,
-    color: '#262626',
   },
   ctaShadow: shadow,
   btnRipple: {
@@ -56,9 +53,8 @@ const CommonStyles = StyleSheet.create({
     // radius: BORDER_RADIUS.md,
     // foreground: true,
   },
-  separator: {borderBottomWidth: 0.5, borderColor: COLORS.lightGray},
+  separator: {borderBottomWidth: 0.5},
   subheadingTitle: {
-    color: COLORS.subHeadingText,
     marginHorizontal: SPACING.md,
     fontSize: 18,
   },

@@ -17,6 +17,7 @@ import {
   CategoryList,
   InDevelopment,
   PayeeList,
+  ThemeSelector,
 } from './components';
 import {currencyState} from '@/app/state';
 import {CurrencyOperations} from '@/src/database';
@@ -27,6 +28,7 @@ import {AppUrl} from '@/app/config';
 import BhIcon from '@/src/app/assets/icons';
 import {BORDER_RADIUS, COLORS, FONTS, SPACING} from '@/src/app/theme';
 import AnalyticsManager from '@/src/app/services/AnalyticsManager';
+import {useTheme} from '@/app/hooks/useTheme';
 
 const openAnotherApp = async (url: string) => {
   try {
@@ -36,10 +38,14 @@ const openAnotherApp = async (url: string) => {
   }
 };
 
-const ChevronRightIcon = ({color = COLORS.black}: {color?: string}) => (
-  <BhIcon name="chevron-right" color={color} />
-);
-const ExternalLinkIcon = () => <BhIcon name="external-link" />;
+const ChevronRightIcon = ({color}: {color?: string}) => {
+  const {colors} = useTheme();
+  return <BhIcon name="chevron-right" color={color || colors.icon} />;
+};
+const ExternalLinkIcon = () => {
+  const {colors} = useTheme();
+  return <BhIcon name="external-link" color={colors.icon} />;
+};
 
 type ModalTextType =
   | 'Currency'
@@ -47,12 +53,15 @@ type ModalTextType =
   | 'Reset Database'
   | 'Features In Development'
   | 'Payee'
+  | 'Theme'
   | null;
 type Props = StackScreenProps<
   NavigationTypes.TSettingStackScreen,
   'Settings$$'
 >;
 export default ({navigation, route}: Props) => {
+  const {colors} = useTheme();
+  const styles = getStyles(colors);
   const fullScreenRef = React.useRef<UtilTypes.TFullScreenModalRef>(null);
   const [openFullScreenModal, setOpenFullScreenModal] = React.useState(false);
   const [appVersion, setAppVerion] = React.useState<string | null>(null);
@@ -167,6 +176,14 @@ export default ({navigation, route}: Props) => {
               text="Payee"
               headerRight={<ChevronRightIcon />}
             />
+            <PressableIconButton
+              iconStyle={styles.iconStyle}
+              style={styles.settingsViewStyle}
+              onPress={() => toggleFullScreenModal('Theme')}
+              iconName="settings"
+              text="Theme"
+              headerRight={<ChevronRightIcon />}
+            />
           </>
         </SettingSection>
         <SettingSection title="Other settings">
@@ -240,6 +257,8 @@ export default ({navigation, route}: Props) => {
             <InDevelopment />
           ) : selectModalText === 'Payee' ? (
             <PayeeList />
+          ) : selectModalText === 'Theme' ? (
+            <ThemeSelector />
           ) : (
             <CurrencyList
               onItemSelect={onCurrencySelectCallback}
@@ -253,21 +272,26 @@ export default ({navigation, route}: Props) => {
   );
 };
 
-const styles = StyleSheet.create({
-  appVersionText: {
-    color: '#333',
-    fontSize: 12,
-    textAlign: 'center',
-    fontWeight: '400',
-    marginTop: SPACING.big,
-  },
-  settingsViewStyle: {
-    paddingVertical: SPACING.sm + 4,
-    borderBottomWidth: 0.6,
-    borderColor: COLORS.lightGray,
-    borderRadius: BORDER_RADIUS.sm,
-    paddingHorizontal: SPACING.sm,
-  },
-  //@ts-expect-error
-  iconStyle: {color: COLORS.primary, size: 16},
-});
+const getStyles = (colors: any) => {
+  const baseStyles = StyleSheet.create({
+    appVersionText: {
+      fontSize: 12,
+      textAlign: 'center',
+      fontWeight: '400',
+      marginTop: SPACING.big,
+      color: colors.text.content,
+    },
+    settingsViewStyle: {
+      paddingVertical: SPACING.sm + 4,
+      borderBottomWidth: 0.6,
+      borderColor: colors.border,
+      borderRadius: BORDER_RADIUS.sm,
+      paddingHorizontal: SPACING.sm,
+    },
+  });
+  
+  return {
+    ...baseStyles,
+    iconStyle: {size: 16, color: colors.primary},
+  };
+};

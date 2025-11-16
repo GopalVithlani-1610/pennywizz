@@ -6,6 +6,7 @@ import {COLORS, FONTS, SPACING} from '@/app/theme';
 import CommonStyles from '@/app/styles';
 import {StyleProp, TextStyle, View} from 'react-native';
 import {currencyState} from '../../state';
+import {useTheme} from '../../hooks/useTheme';
 
 type Props = {
   amount: number;
@@ -28,6 +29,7 @@ export default ({
   highlightIfNegative,
 }: Props) => {
   const currency = useRecoilValue(currencyState);
+  const {colors} = useTheme();
   const _amount = amount.formatIntoCurrency();
 
   return (
@@ -52,10 +54,11 @@ export default ({
           styles.currencyText,
           {
             fontSize: fontSize,
+            color: colors.text.subheading,
           },
           amountTextStyle,
           highlightIfNegative &&
-            amount < 0 && {color: '#8B0000', fontWeight: '500'},
+            amount < 0 && {color: '#E53E3E', fontWeight: '500'},
         ]}>
         {_amount.slice(0, -2)}
         <Text
@@ -64,8 +67,8 @@ export default ({
               fontSize: fontSize * 0.8,
               color:
                 highlightIfNegative && amount < 0
-                  ? '#800000'
-                  : COLORS.mediumGray,
+                  ? '#C53030'
+                  : colors.text.content,
             },
             decimalStyle,
           ]}>
@@ -80,12 +83,10 @@ const styles = StyleSheet.create({
   currency: {
     fontSize: 10,
     fontFamily: FONTS.semiBold,
-    color: COLORS.mediumGray,
   },
   currencyText: {
     fontSize: 18,
     fontFamily: FONTS.medium,
-    color: COLORS.subHeadingText,
     // textAlignVertical: 'center',
   },
 });

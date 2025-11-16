@@ -6,3 +6,5 @@ export {default as useDoubleTap} from './useDoubleTap';
 export {default as useAppAmountInput} from './useAppAmountInput';
 export {default as useGroupTransactionsByDates} from './useGroupTransactionsByDates';
 export {default as useUserInteraction} from './useUserInteraction';
+export {useTheme} from './useTheme';
+export {useCommonStyles} from './useCommonStyles';

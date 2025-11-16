@@ -1,10 +1,10 @@
 import React from 'react';
 import {View, StyleSheet, ViewStyle, TextStyle} from 'react-native';
 import {Pressable, Text} from '../atoms';
-import {COLORS} from '@/app/theme';
 import {IconType} from '@/app/assets';
 import BhIcon from '@/app/assets/icons';
 import CommonStyles from '@/app/styles';
+import {useTheme} from '@/app/hooks/useTheme';
 
 type Props = {
   text?: string;
@@ -26,11 +26,11 @@ const IconButton = ({
   headerRight,
   style,
   textStyle,
-  iconStyle = {
-    color: COLORS.primary,
-    size: 15,
-  },
+  iconStyle,
 }: Props) => {
+  const {colors} = useTheme();
+  const defaultIconColor = iconStyle?.color || colors.primary;
+  
   return (
     <Pressable
       ripple={CommonStyles.btnRipple}
@@ -38,12 +38,17 @@ const IconButton = ({
       onPress={onPress}
       style={StyleSheet.compose(styles.container, style)}>
       <View style={CommonStyles.displayRow}>
-        <BhIcon name={iconName} size={iconStyle.size} color={iconStyle.color} />
+        <BhIcon 
+          name={iconName} 
+          size={iconStyle?.size || 15} 
+          color={defaultIconColor} 
+        />
         {typeof text !== 'undefined' && (
           <Text
             textType="normal"
             style={[
               styles.textStyle,
+              {color: colors.text.heading},
               typeof textStyle !== 'undefined' ? textStyle : {},
             ]}>
             {text}
@@ -63,10 +68,8 @@ const styles = StyleSheet.create({
   },
   textStyle: {
     fontSize: 14,
-    color: '#000',
     marginLeft: 10,
     fontWeight: '500',
   },
 });
-
 export default IconButton;

@@ -7,6 +7,7 @@ import {View} from 'react-native';
 import {StyleSheet} from 'react-native';
 import {BORDER_RADIUS, COLORS, SPACING} from '../../theme';
 import {Currency} from '..';
+import {useTheme} from '../../hooks/useTheme';
 
 const Transaction = createContext<TransactionCategoriesPayeeLinkEntity | null>(
   null,
@@ -16,9 +17,10 @@ type TransactionCardProps = PropsWithChildren & {
   transaction: TransactionCategoriesPayeeLinkEntity;
 };
 const TransactionCard = (props: TransactionCardProps) => {
+  const {colors} = useTheme();
   return (
     <Transaction.Provider value={props.transaction}>
-      <View style={styles.container}>{props.children}</View>
+      <View style={[styles.container, {borderColor: colors.border, backgroundColor: colors.cardBackground}]}>{props.children}</View>
     </Transaction.Provider>
   );
 };
@@ -58,11 +60,12 @@ const TransactionPayee = () => {
 
 const TransactionAmount = () => {
   const transaction = useTransaction();
+  const {colors} = useTheme();
   return (
     <Currency
       amount={transaction.amount}
       fontSize={16}
-      amountTextStyle={{color: COLORS.black}}
+      amountTextStyle={{color: colors.text.heading}}
     />
   );
 };
@@ -76,7 +79,6 @@ TransactionCard.Payee = TransactionPayee;
 const styles = StyleSheet.create({
   container: {
     borderWidth: StyleSheet.hairlineWidth * 2,
-    borderColor: '#DBDBDB',
     borderRadius: BORDER_RADIUS.sm,
     padding: SPACING.sm,
     gap: SPACING.sm,

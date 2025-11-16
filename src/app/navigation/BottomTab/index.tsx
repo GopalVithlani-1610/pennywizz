@@ -14,6 +14,7 @@ import {SpendingsStack, SettingsStack, DashboardStack} from '../ScreenStacks';
 import {NavigationTypes} from '@/src/types';
 import {BORDER_RADIUS, COLORS} from '@/app/theme';
 import {useGetDBDataOnAppStart} from '@/app/hooks';
+import {useTheme} from '@/app/hooks/useTheme';
 import AnalyticsManager from '@/app/services/AnalyticsManager';
 import {
   StackCardInterpolatedStyle,
@@ -33,14 +34,15 @@ const EditorPlaceholder = () => (
   </View>
 );
 const Tabs = () => {
+  const {colors, isDark} = useTheme();
   return (
     <BottomTab.Navigator
       initialRouteName="Dashboard"
       tabBar={BottomTabs}
       screenOptions={{
         headerTitleAlign: 'center',
-        tabBarActiveTintColor: COLORS.primary,
-        tabBarInactiveTintColor: '#999',
+        tabBarActiveTintColor: colors.primary,
+        tabBarInactiveTintColor: isDark ? colors.iconInactive : '#999',
         headerShown: false,
       }}>
       <BottomTab.Screen

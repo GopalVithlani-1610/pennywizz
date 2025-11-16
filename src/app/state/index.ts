@@ -7,3 +7,4 @@ export {
   budgetState,
   expenseTransactionsState,
 } from './global-shared.state';
+export {themeModeAtom, isDarkModeSelector, type ThemeMode} from './utils.state';

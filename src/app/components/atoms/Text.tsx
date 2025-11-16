@@ -7,25 +7,13 @@ import {
   type TextProps as RNTextProps,
 } from 'react-native';
 import {UtilTypes} from '@/src/types';
-import {COLORS, FONTS} from '@/app/theme';
+import {FONTS} from '@/app/theme';
+import {useTheme} from '@/app/hooks/useTheme';
 
 export type TextProps = PropsWithChildren & {
   style?: StyleProp<TextStyle>;
   textType?: UtilTypes.TTextType;
   numberOfLines?: number;
-};
-
-const returnStyleBasedOnTextType = (textType: TextProps['textType']) => {
-  switch (textType) {
-    case 'heading':
-      return styles.heading;
-    case 'subheading':
-      return styles.subHeading;
-    case 'normal':
-      return styles.normal;
-    case 'paragraph':
-      return styles.paragraph;
-  }
 };
 
 const Text = ({
@@ -35,11 +23,60 @@ const Text = ({
   children,
   ...props
 }: TextProps & RNTextProps) => {
-  const stylesBasedOnTextType = returnStyleBasedOnTextType(textType);
+  const {colors} = useTheme();
+  
+  const getTextColor = () => {
+    switch (textType) {
+      case 'heading':
+        return colors.text.heading;
+      case 'subheading':
+        return colors.text.subheading;
+      case 'normal':
+      case 'paragraph':
+      default:
+        return colors.text.content;
+    }
+  };
+
+  const getTextStyle = () => {
+    const baseStyle: TextStyle = {
+      color: getTextColor(),
+    };
+    
+    switch (textType) {
+      case 'heading':
+        return {
+          ...baseStyle,
+          fontFamily: FONTS.semiBold,
+          fontWeight: '800' as const,
+          fontSize: 23,
+        };
+      case 'subheading':
+        return {
+          ...baseStyle,
+          fontFamily: FONTS.semiBold,
+          fontWeight: '600' as const,
+        };
+      case 'normal':
+        return {
+          ...baseStyle,
+          fontFamily: FONTS.regular,
+          fontSize: 15,
+        };
+      case 'paragraph':
+        return {
+          ...baseStyle,
+          fontFamily: FONTS.regular,
+        };
+      default:
+        return baseStyle;
+    }
+  };
+
   return (
     <RNText
       numberOfLines={numberOfLines}
-      style={[stylesBasedOnTextType, style]}
+      style={[getTextStyle(), style]}
       allowFontScaling={false}
       {...props}>
       {children}
@@ -47,30 +84,4 @@ const Text = ({
   );
 };
 
-const styles = StyleSheet.create({
-  heading: {
-    fontFamily: FONTS.semiBold,
-    // fontFamily: 'InterVariable',
-    fontWeight: 800,
-    color: COLORS.darkGray,
-    fontSize: 23,
-  },
-  subHeading: {
-    fontFamily: FONTS.semiBold,
-    color: COLORS.darkGray,
-    // fontFamily: 'InterVariable',
-    fontWeight: 600,
-    // top: 2,
-  },
-  normal: {
-    fontFamily: FONTS.regular,
-    color: COLORS.darkGray,
-    fontSize: 15,
-    // top: 2,
-  },
-  paragraph: {
-    fontFamily: FONTS.regular,
-    color: COLORS.darkGray,
-  },
-});
 export default Text;

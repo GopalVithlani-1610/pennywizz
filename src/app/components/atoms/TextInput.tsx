@@ -7,6 +7,7 @@ import {
   TextInputProps as RNTextInputProps,
 } from 'react-native';
 import {BORDER_RADIUS, COLORS, FONTS} from '@/app/theme';
+import {useTheme} from '@/app/hooks/useTheme';
 
 type TextInputProps = {
   placeholder: string;
@@ -18,19 +19,21 @@ type TextInputProps = {
   autoFocus?: boolean;
 };
 const TextInput = (props: TextInputProps & RNTextInputProps) => {
+  const {colors, isDark} = useTheme();
+  
   return (
     <RNTextInput
       {...props}
-      placeholderTextColor={'#DDD'}
-      style={[styles.default, props.style]}
+      placeholderTextColor={isDark ? '#888888' : '#999999'}
+      style={[styles.default, {color: colors.text.content}, props.style]}
       value={props.value}
       onChangeText={props.onChangeText}
       placeholder={props.placeholder}
-      selectionColor={COLORS.lightPrimary}
+      selectionColor={colors.primary}
       keyboardType={props.keyboardType || 'default'}
       maxLength={props.maxLength}
       autoFocus={props.autoFocus}
-      cursorColor={COLORS.primary}
+      cursorColor={colors.primary}
     />
   );
 };
@@ -47,8 +50,6 @@ export const TextInputStyles = StyleSheet.create({
   inputField: {
     borderRadius: BORDER_RADIUS.sm,
     borderWidth: 1,
-    borderColor: COLORS.lightGray,
-    color: COLORS.black,
   },
   //eslint-disable-next-line react-native/no-unused-styles
   removePadding: {

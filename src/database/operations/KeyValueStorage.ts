@@ -7,6 +7,7 @@ export const StorageKeys = {
   ONBOARDING_JOURNEY_COMPLETED: 'onboardingJourneyCompleted',
   SYNC_LAST_PULLED_AT: 'lastPulledAt',
   USER_NAME: 'userName',
+  THEME_PREFERENCE: 'themePreference',
 };
 
 export default class KeyValueStorage {

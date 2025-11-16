@@ -19,10 +19,10 @@ import {View} from 'react-native';
 import {
   NavigationContainer,
   useNavigationContainerRef,
-  useTheme,
 } from '@react-navigation/native';
 import AnalyticsManager from './src/app/services/AnalyticsManager';
 import CodePush from 'react-native-code-push';
+import {useTheme} from './src/app/hooks/useTheme';
 
 function ErrorFallback() {
   useEffect(() => {
@@ -45,14 +45,12 @@ function ErrorFallback() {
   );
 }
 
-const CodePushedApp = withCodePush(() => {
-  const theme = useTheme();
+// Component that uses theme hook - must be inside RecoilRoot
+const NavigationContainerWithTheme = () => {
+  const {theme, colors} = useTheme();
   const navigationRef = useNavigationContainerRef();
   const routeNameRef = useRef<string>();
   return (
-    <SafeAreaView style={CommonStyles.flex1}>
-      <ErrorBoundary fallback={<ErrorFallback />}>
-        <GestureHandlerRootView>
           <NavigationContainer
             theme={theme}
             ref={navigationRef}
@@ -71,20 +69,37 @@ const CodePushedApp = withCodePush(() => {
             }}>
             <PaymentProvider>
               <ToastProvider>
-                <RecoilRoot>
                   <PortalProvider>
                     <Suspense fallback={<Loader show />}>
                       <NavigationRoot />
                     </Suspense>
                   </PortalProvider>
-                </RecoilRoot>
               </ToastProvider>
             </PaymentProvider>
           </NavigationContainer>
+  );
+};
+
+const CodePushedApp = withCodePush(() => {
+  return (
+    <RecoilRoot>
+      <ThemeWrapper />
+    </RecoilRoot>
+  );
+});
+
+// Wrapper to access theme inside RecoilRoot
+const ThemeWrapper = () => {
+  const {colors} = useTheme();
+  return (
+    <SafeAreaView style={[CommonStyles.flex1, {backgroundColor: colors.screenBackground}]}>
+      <ErrorBoundary fallback={<ErrorFallback />}>
+        <GestureHandlerRootView style={{flex: 1}}>
+          <NavigationContainerWithTheme />
         </GestureHandlerRootView>
       </ErrorBoundary>
     </SafeAreaView>
   );
-});
+};
 
 export default CodePushedApp;

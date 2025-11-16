@@ -24,22 +24,49 @@ export const COLORS = {
 
 export const ThemeColors = {
   light: {
-    primary: '',
-    secondry: '',
-    screenBackground: '',
+    primary: COLORS.primary,
+    secondry: COLORS.secondry,
+    screenBackground: COLORS.white,
     text: {
-      heading: '',
-      subheading: '',
-      content: '',
+      heading: COLORS.black,
+      subheading: COLORS.subHeadingText,
+      content: COLORS.darkGray,
     },
     button: {
       primary: {
-        bg: '',
-        text: '',
+        bg: COLORS.primary,
+        text: COLORS.white,
       },
     },
+    cardBackground: COLORS.white,
+    border: COLORS.lightGray,
+    inputBackground: COLORS.slightOffWhite,
+    icon: COLORS.darkGray, // Dark color for icons in light mode
+    iconInactive: COLORS.mediumGray, // Medium gray for inactive icons
+    separator: COLORS.lightGray, // Light separators
   },
-  dark: {},
+  dark: {
+    primary: '#6B5FD9', // Brighter purple for better visibility
+    secondry: '#FFC107', // Vibrant amber/yellow for better contrast
+    screenBackground: '#121212', // Material Design dark background
+    text: {
+      heading: '#FFFFFF', // Pure white for maximum contrast
+      subheading: '#E0E0E0', // High emphasis text (87% white)
+      content: '#B3B3B3', // Medium emphasis text (60% white)
+    },
+    button: {
+      primary: {
+        bg: '#6B5FD9', // Brighter primary for dark mode
+        text: '#FFFFFF',
+      },
+    },
+    cardBackground: '#1E1E1E', // Elevated surface (slightly lighter)
+    border: '#3A3A3A', // More visible border with better contrast
+    inputBackground: '#2C2C2C', // Better contrast for inputs
+    icon: '#E0E0E0', // High emphasis icons
+    iconInactive: '#757575', // Medium gray for inactive (better visibility)
+    separator: '#3A3A3A', // More visible separators
+  },
 };
 const baseTextSize = 14;
 export const headerTextSize = baseTextSize * 2;
